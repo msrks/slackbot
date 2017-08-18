@@ -2,3 +2,5 @@ __pycache__/
 .python-version
 plugins/__pycache__
 slackbot_settings.py
+
+curl -X POST https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk -F "apikey=QlEOuhb6Y2Fk6NxJeuhQD3UCHWJAkCex" -F "query=おはよう"

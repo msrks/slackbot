@@ -68,6 +68,16 @@ def listen_func(message):
     price = q.get_price(9501).close
     message.send("東京電力 {0} ({1})".format(price, price-472))
 
+import pya3rt
+@default_reply()
+def send_message(message):
+    apikey = ""
+    client = pya3rt.TalkClient(apikey)
+    reply_message = client.talk(message.body['text'])
+    # 以下の形式でjsonが返ってくるので、replyの部分をとりだす
+    # {'status': 0, 'message': 'ok', 'results': [{'perplexity': 1.2802554542585969, 'reply': '私にはよくわからないです'}]}
+    message.reply("あっ、あっ、、（"+reply_message['results'][0]['reply'] + "）" )
+
 from plugins.scripts.confirm_weather import ConfirmWeather
 # 今日のお天気を教えてくれる機能
 @respond_to('(^.*今日.*天気.*)')
