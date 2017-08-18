@@ -67,3 +67,10 @@ def listen_func(message):
     message.send("NTTデータ {0} ({1})".format(price, price-1215))
     price = q.get_price(9501).close
     message.send("東京電力 {0} ({1})".format(price, price-472))
+
+from plugins.scripts.confirm_weather import ConfirmWeather
+# 今日のお天気を教えてくれる機能
+@respond_to('(^.*今日.*天気.*)')
+def confirm_today_weather(message, something):
+    weather_class = ConfirmWeather()
+    weather_class.return_today_weather(message)
